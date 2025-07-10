@@ -50,6 +50,3 @@ Este projeto contém quatro exercícios práticos para fixação do conceito de 
 ## Como executar
 
 1. Copie o código do arquivo `Main.java` deste repositório.
-2. Compile:
-   ```bash
-   javac Main.java
