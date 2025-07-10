@@ -12,7 +12,7 @@ public class Main {
         throw new ExceptionChecada("Mensagem de exceção checada lançada!");
     }
 
-    public static void metodoChecadaY() throws ExceptionChecada {
+    public static void mensagemChecadaChamada() throws ExceptionChecada {
         mensagemChecada();
     }
 
@@ -29,14 +29,14 @@ public class Main {
         throw new ExceptionNaoChecada("mensagem de exceção NÃO checada lançada!");
     }
 
-    public static void metodoNaoChecadaY() {
+    public static void mensagemNaoChecadaChamada() {
         mensagemNaoChecada();
     }
 
     public static void main(String[] args) {
         System.out.println("EXERCÍCIO 1: EXCEÇÃO CHECADA ");
         try {
-            metodoChecadaY();
+            mensagemChecadaChamada();
         } catch (ExceptionChecada e) {
             System.out.println("Peguei uma mensagem exception checada: " + e.getMessage());
         }
@@ -45,9 +45,8 @@ public class Main {
 
         //mensagemNaoChecada();
 
-
         try {
-            metodoNaoChecadaY();
+            mensagemNaoChecadaChamada();
         } catch (ExceptionNaoChecada e) {
             System.out.println("Peguei uma mensagem exception NÃO checada: " + e.getMessage());
         }
