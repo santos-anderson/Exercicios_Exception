@@ -1,77 +1,60 @@
 public class Main {
 
-    //1. Exceção Checada//
-
-    public static class ExceptionChecada extends Exception {
-        public ExceptionChecada(String msg) {
+    // Exceção checada
+    public static class mensagemErroChecado extends Exception {
+        public mensagemErroChecado(String msg) {
             super(msg);
         }
     }
 
-    public static void mensagemChecada() throws ExceptionChecada {
-        throw new ExceptionChecada("Mensagem de exceção checada lançada!");
+    public static void erromensagemChecado() throws mensagemErroChecado {
+        throw new mensagemErroChecado("Mensagem de erro Checado!");
     }
 
-    public static void mensagemChecadaChamada() throws ExceptionChecada {
-        mensagemChecada();
-    }
-
-
-    // 2. Exceção Não-Checada//
-
-    public static class ExceptionNaoChecada extends RuntimeException {
-        public ExceptionNaoChecada(String msg) {
-            super(msg);
+    // Exceção não-checada
+    public static class mensagemErroNaoChecado extends RuntimeException {
+        public mensagemErroNaoChecado(String texto) {
+            super(texto);
         }
     }
 
-    public static void mensagemNaoChecada() {
-        throw new ExceptionNaoChecada("mensagem de exceção NÃO checada lançada!");
-    }
-
-    public static void mensagemNaoChecadaChamada() {
-        mensagemNaoChecada();
+    public static void erromensagemNaoChecado() {
+        throw new mensagemErroNaoChecado("Deu erro NÃO Checado!");
     }
 
     public static void main(String[] args) {
-        System.out.println("EXERCÍCIO 1: EXCEÇÃO CHECADA ");
+        System.out.println("Teste exception checada");
         try {
-            mensagemChecadaChamada();
-        } catch (ExceptionChecada e) {
-            System.out.println("Peguei uma mensagem exception checada: " + e.getMessage());
+            erromensagemChecado();
+        } catch (mensagemErroChecado e) {
+            System.out.println("Messagem de erro checado: " + e.getMessage());
         }
 
-        System.out.println("\n EXERCÍCIO 2: EXCEÇÃO NÃO-CHECADA");
-
-        //mensagemNaoChecada();
-
+        System.out.println("\nTeste exception NÃO checada");
         try {
-            mensagemNaoChecadaChamada();
-        } catch (ExceptionNaoChecada e) {
-            System.out.println("Peguei uma mensagem exception NÃO checada: " + e.getMessage());
+            erromensagemNaoChecado();
+        } catch (mensagemErroNaoChecado e) {
+            System.out.println("Mensagem de erro não checado: " + e.getMessage());
         }
 
-        System.out.println("\n EXERCÍCIO 3: TRY-CATCH-FINALLY SEM EXCEÇÃO");
+        System.out.println("\nTry-catch-finally sem erro");
         try {
-            System.out.println("TRY: Antes do cálculo.");
-            int resultado = 6 + 5;
-            System.out.println("TRY: Calculei 6 + 5 = " + resultado);
-            System.out.println("TRY: Fim do bloco TRY (sem exceção).");
+            int resultado = 2 + 3;
+            System.out.println("Resultado: " + resultado);
         } catch (Exception e) {
-            System.out.println("CATCH: Não será executado.");
+            System.out.println("não devia cair aqui");
         } finally {
-            System.out.println("FINALLY: Sempre executa.");
+            System.out.println("Fim do try-catch-finally (sem erro)");
         }
 
-        System.out.println("\n EXERCÍCIO 4: TRY-CATCH-FINALLY COM EXCEÇÃO");
+        System.out.println("\nTry-catch-finally COM erro");
         try {
-            System.out.println("TRY: Antes de lançar a exceção.");
-            int erro = 10 / 0;
-            System.out.println("TRY: Esta linha NÃO será executada.");
+            int n = 5 / 0;
+            System.out.println("isso não vai aparecer");
         } catch (Exception e) {
-            System.out.println("CATCH: Peguei a exceção: " + e);
+            System.out.println("Mensagem de erro: " + e);
         } finally {
-            System.out.println("FINALLY: Sempre executa (mesmo com erro).");
+            System.out.println("finally executado mesmo com erro");
         }
     }
 }
